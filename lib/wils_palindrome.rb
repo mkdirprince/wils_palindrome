@@ -1,8 +1,15 @@
-# frozen_string_literal: true
+require "wils_palindrome/version"
 
-require_relative "wils_palindrome/version"
+class String 
 
-module WilsPalindrome
-  class Error < StandardError; end
-  # Your code goes here...
+  #Returns true for a palindrome, false otherwise
+  def palindrome?
+    processed_content == processed_content.reverse
+  end
+
+  private
+    #Returns content for palindrome testing
+    def processed_content
+      self.scan(/[a-z]/i).join("").downcase
+    end
 end
